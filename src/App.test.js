@@ -1,17 +1,20 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
 
-test("renders learn react link", () => {
+test("button has blue color initially and change to red when clicked", () => {
    render(<App />);
-   //create virtual DOM
-   const linkElement = screen.getByText("Learn React");
-   //access virtual DOM by screen global object
-   // regex, i = case insensitive. Can use string : 'Learn React'
-   expect(linkElement).toBeInTheDocument();
-   //  expect(element.textContent).toBe("hello");
-   //  expect(elementsArray).toHaveLength(7);
-   // assertion : succeed or fail
-   // expect : Jest global
-   //  toBeInTheDocument() : matcher => type of assertion
-   //  from Jest DOM
+   // find el with role button and text Change to blue
+   const colorButton = screen.getByRole("button", { name: "Change to blue" }); // 2nd argument is option
+   expect(colorButton).toHaveStyle({ backgroundColor: "red" });
+
+   // click btn
+   fireEvent.click(colorButton);
+   expect(colorButton).toHaveStyle({ backgroundColor: "blue" });
+   expect(colorButton.textContent).toBe("Change to red");
 });
+
+// test("button turns blue when clicked", () => {
+//    render(<App />);
+//    const colorButton = screen.getByRole("button", { name: "Change to blue" });
+
+// });
