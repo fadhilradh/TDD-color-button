@@ -6,10 +6,18 @@ export function replaceCamelWithSpaces(colorName) {
    return colorName.replace(/\B([A-Z])\B/g, " $1");
 }
 
+export function changeVioletRedToMidnightBlue(colorName) {
+   if (colorName === "MediumVioletRed") {
+      return "MidnightBlue";
+   }
+   return;
+}
+
 function App() {
-   const [btnColor, setBtnColor] = useState("red"),
+   const [btnColor, setBtnColor] = useState("MediumVioletRed"),
       [btnDisabled, setBtnDisabled] = useState(false);
-   const newButtonColor = btnColor === "red" ? "blue" : "red";
+   const newButtonColor =
+      btnColor === "MediumVioletRed" ? "MidnightBlue" : "MediumVioletRed";
    return (
       <div className="App">
          <button
@@ -22,7 +30,7 @@ function App() {
                setBtnColor(newButtonColor);
             }}
          >
-            Change to {newButtonColor}
+            Change to {replaceCamelWithSpaces(newButtonColor)}
          </button>
          <input
             type="checkbox"
