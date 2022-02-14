@@ -13,17 +13,17 @@ test("button has blue color initially and change to red when clicked", () => {
    expect(colorButton).toHaveStyle({ backgroundColor: "MediumVioletRed" });
 
    // click btn and change to red
-   fireEvent.click(colorButton); 
+   fireEvent.click(colorButton);
    expect(colorButton).toHaveStyle({ backgroundColor: "MidnightBlue" });
    expect(colorButton.textContent).toBe("Change to Medium Violet Red");
-});   
-  
+});
+
 test("initial conditions for button and checkbox", () => {
-   // check the button starts enabled 
+   // check the button starts enabled
    render(<App />);
    const colorButton = screen.getByRole("button", {
       name: "Change to Midnight Blue",
-   });  
+   });
    expect(colorButton).toBeEnabled();
    // check the checkbox starts unchecked
 
@@ -42,7 +42,7 @@ test("button disabled when checkbox on first click and enabled on second click",
    expect(colorButton).toBeDisabled();
    expect(colorButton).toHaveStyle({ backgroundColor: "gray" });
 
-   fireEvent.click(checkbox); 
+   fireEvent.click(checkbox);
    expect(colorButton).toBeEnabled();
 });
 
